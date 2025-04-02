@@ -9,9 +9,9 @@
     <!--<title>Document</title>-->
 </head>
 <body>
-    {% block cuerpo %} 
+  {% block cuerpo %} 
     <h1>Login en h1</h1>
-    <section class="vh-100">
+    <section class="vh-80">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -19,25 +19,17 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form action="/login" method="POST">
-                
                 <!-- Username input -->
                 <div data-mdb-input-init class="form-outline mb-3">
                     <input type="text" id="form3Example2" class="form-control form-control-lg" placeholder="Enter a valid username" name="username" required/>
                     <label class="form-label" for="form3Example2">Username</label>
                 </div>
-
-                <!-- Email input 
-                <div data-mdb-input-init class="form-outline mb-3">
-                  <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
-                  <label class="form-label" for="form3Example3">Email address</label>
-                </div> -->
-                
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" name="password" required/>
                   <label class="form-label" for="form3Example4">Password</label>
                 </div>
-      
+
                 <div class="d-flex justify-content-between align-items-center">
                   <!-- Checkbox -->
                   <div class="form-check mb-0">
@@ -60,7 +52,18 @@
           </div>
         </div>
       </section>
-    {% endblock %}
+    
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul>
+            {% for category, message in messages %}
+              <li class="alert alert-{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      
+  {% endblock %}
     <!--<h1>Login en h1</h1>-->
 </body>
 </html>
