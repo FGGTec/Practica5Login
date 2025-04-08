@@ -33,3 +33,7 @@ form {
     background-color: #e5e9ee; 
     color: #0d6efd; 
 }
+
+body {
+    padding: 10px;
+}

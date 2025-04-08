@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %}Home{% endblock %}</title>
+    {% block miCSS %}<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">{% endblock %}
+    <title>{% block titulo %}Admin{% endblock %}</title>
 </head>
 <body>
-    {% block cuerpo %}<h1>Hola <b>{{ username }}</b>, esta es la pagina para los <i>admin</i></h1> {% endblock %}
+    {% block cuerpo %}
+        <!--<h1>Hola <b>{{ username }}</b>, esta es la pagina para los <i>admin</i></h1>
+        <h2>Nombre completo de administrador: <u>{{ current_user.fullname }}</u></h2>-->
+        <h1>Nombre completo de <u>administrador</u>:  <i><b>{{ current_user.fullname }}</b></i></h1>
+        <a class="btn btn-danger" href="{{ url_for('logout') }}">Cerrar sesión</a>
+    {% endblock %}
 </body>
 </html>
